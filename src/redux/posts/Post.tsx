@@ -6,13 +6,13 @@ interface PostProps {
   post: {
     id: number;
     title: string;
-    content: string;
+    body: string;
     userId: string;
   };
 }
 
 const Post: React.FC<PostProps> = ({ post }) => {
-  const { title, content } = post;
+  const { title, body } = post;
   const users = useSelector((state: any) => state.users);
   const author = users.find((user: any) => user.id === post.userId);
 
@@ -20,7 +20,7 @@ const Post: React.FC<PostProps> = ({ post }) => {
     <Card sx={{ p: 5, m: 5, background: "#F1F1F1" }}>
       <CardContent>
         <Typography variant="h5">{title}</Typography>
-        <Typography>{content}</Typography>
+        <Typography>{body}</Typography>
         <Typography mt={5} variant="subtitle1">
           by {author ? author.username : "Unknown author"}
         </Typography>
